@@ -7,62 +7,43 @@ import {
   TableRow,
   TableRowColumn,
 } from 'material-ui/Table';
-const resetFlightObj= (flightObj) => {
-  debugger;
-  flightObj ={
-      name: "",
-      from: "",
-      to:"",
-      departure:"",
-      price:""
-  };
-}
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import AddFlight from './addFlight';
 const FlightList = ({flights , addFlight}) => {
-  let flightList , flightObj = {};
-
-  resetFlightObj(flightObj);
+  let flightList;
   if(!flights || !flights.length){
-    flightList = <tr><td>No flights to show</td></tr>
+    flightList = <TableRow> <TableRowColumn> No flights to show </TableRowColumn></TableRow>
   }
   else{
-    flightList = flights.map(flight => (<tr key={flight.departure}>
-      <td>{flight.from}</td>
-      <td>{flight.to}</td>
-      <td>{flight.departure}</td>
-      <td>{flight.landing}</td>
-      <td>{flight.price}</td>
-  </tr> ));
+    flightList = flights.map(flight => (<TableRow key={flight.departure}>
+      <TableRowColumn>{flight.from}</TableRowColumn>
+      <TableRowColumn>{flight.to}</TableRowColumn>
+      <TableRowColumn>{flight.departure}</TableRowColumn>
+      <TableRowColumn>{flight.landing}</TableRowColumn>
+      <TableRowColumn>{flight.price}</TableRowColumn>
+  </TableRow> ));
   }
   return (
     <div>
-      <div>
-        <label htmlFor="name">Name</label>
-        <input onChange={(event) => {flightObj.name = event.currentTarget.value;}} />
-        <label htmlFor="from">From</label>
-        <input onChange={(event) => {flightObj.from = event.currentTarget.value;}} />
-        <label htmlFor="to">To </label>
-        <input onChange={(event) => {flightObj.to = event.currentTarget.value;}} />
-        <label htmlFor="destination">Destination</label>
-        <input onChange={(event) => {flightObj.destination = event.currentTarget.value;}} />
-        <label htmlFor="price">Price</label>
-        <input onChange={(event) => {flightObj.price = event.currentTarget.value;}} />
-        <button onClick={() => {resetFlightObj(flightObj); addFlight(flightObj)} }>Add Flight</button>
-      </div>
-      <table>
-        <thead>
-          <tr>
-            <th>From</th>
-            <th>To</th>
-            <th>Departure Time</th>
-            <th>Landing Time</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          {flightList}
-        </tbody>
-      </table>
-    </div>
+      <AddFlight onClick={addFlight}></AddFlight>
+      <MuiThemeProvider>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHeaderColumn>From</TableHeaderColumn>
+              <TableHeaderColumn>To</TableHeaderColumn>
+              <TableHeaderColumn>Departure Time</TableHeaderColumn>
+              <TableHeaderColumn>Landing Time</TableHeaderColumn>
+              <TableHeaderColumn>Price</TableHeaderColumn>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {flightList}
+          </TableBody>
+      </Table>
+    </MuiThemeProvider>
+  </div>
+
   );
 }
 
