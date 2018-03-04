@@ -8,12 +8,13 @@ import {
   TableRowColumn,
 } from 'material-ui/Table';
 const resetFlightObj= (flightObj) => {
+  debugger;
   flightObj ={
       name: "",
       from: "",
       to:"",
-      destination:"",
-      type:""
+      departure:"",
+      price:""
   };
 }
 const FlightList = ({flights , addFlight}) => {
@@ -24,26 +25,26 @@ const FlightList = ({flights , addFlight}) => {
     flightList = <tr><td>No flights to show</td></tr>
   }
   else{
-    flightList = flights.map(flight => <tr>
+    flightList = flights.map(flight => (<tr key={flight.departure}>
       <td>{flight.from}</td>
       <td>{flight.to}</td>
       <td>{flight.departure}</td>
       <td>{flight.landing}</td>
       <td>{flight.price}</td>
-  </tr>);
+  </tr> ));
   }
   return (
     <div>
       <div>
-        <label htmlFor="name"></label>
+        <label htmlFor="name">Name</label>
         <input onChange={(event) => {flightObj.name = event.currentTarget.value;}} />
-        <label htmlFor="from"></label>
+        <label htmlFor="from">From</label>
         <input onChange={(event) => {flightObj.from = event.currentTarget.value;}} />
-        <label htmlFor="to"></label>
+        <label htmlFor="to">To </label>
         <input onChange={(event) => {flightObj.to = event.currentTarget.value;}} />
-        <label htmlFor="destination"></label>
+        <label htmlFor="destination">Destination</label>
         <input onChange={(event) => {flightObj.destination = event.currentTarget.value;}} />
-        <label htmlFor="price"></label>
+        <label htmlFor="price">Price</label>
         <input onChange={(event) => {flightObj.price = event.currentTarget.value;}} />
         <button onClick={() => {resetFlightObj(flightObj); addFlight(flightObj)} }>Add Flight</button>
       </div>
