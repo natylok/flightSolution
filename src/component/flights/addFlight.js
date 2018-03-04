@@ -8,7 +8,6 @@ const style = {
 class AddFlight extends React.Component{
     constructor(props){
         super(props);
-        debugger;
         this.state = {
             flightObj: {
                 from:"",
@@ -18,17 +17,6 @@ class AddFlight extends React.Component{
                 price:""
             }
         };
-    }
-    cleanState(){
-        this.state = {
-            flightObj: {
-                from:"",
-                to:"",
-                depature:"",
-                landing:"",
-                price:""
-            }
-        }
     }
     render(){
         return (

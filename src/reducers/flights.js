@@ -1,6 +1,5 @@
 import _ from 'lodash';
 const flightsReducer = (state = [] , action) => {
-    debugger;
     switch(action.type){
         case 'ADD_FLIGHT':
             return [ ...state , action.flight];

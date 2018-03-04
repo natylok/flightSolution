@@ -1,17 +1,19 @@
 import { connect } from 'react-redux'
 import LoginPage from './loginPage.js'
-import loginUser from './../../actions/index.js'
-import { HashRouter } from 'react-router-dom'
+import {loginUser} from './../../actions/index.js'
+import  {HashRouter}  from 'react-router-dom'
+var hasshRouterObj =  new HashRouter();
 const mapStateToProps = (state) => {
-    debugger;
     if(state.userReducer && state.userReducer.loggedIn){
-        window.location.hash = "/flights";
+        hasshRouterObj.history.push("/flights");
+    }
+    return {
+        isLogedin: state.userReducer.loggedIn
     }
   }
 const mapDispatchToProps = dispatch => {
     return {
         onSubmit: (userName,password) => {
-            console.log(userName,password);
             dispatch(loginUser(userName,password));
         }
     }
