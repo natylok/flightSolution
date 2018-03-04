@@ -32,7 +32,7 @@ class AddFlight extends React.Component{
                     onChange={(event) => {this.state.flightObj.landing = event.currentTarget.value}}   hintText="Landing"/><br />
                     <TextField
                     onChange={(event) => {this.state.flightObj.price = event.currentTarget.value}}   hintText="Price"/><br />
-                    <RaisedButton label="Add Flight" onClick={() => {this.props.onClick(this.state.flightObj); this.cleanState()}} primary={true} style={style} />
+                    <RaisedButton label="Add Flight" onClick={() => {this.props.onClick(this.state.flightObj); }} primary={true} style={style} />
                 </div>
             </MuiThemeProvider>
         )

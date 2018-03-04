@@ -18,7 +18,7 @@ const FlightList = ({flights , addFlight}) => {
     flightList = flights.map(flight => (<TableRow key={flight.departure}>
       <TableRowColumn>{flight.from}</TableRowColumn>
       <TableRowColumn>{flight.to}</TableRowColumn>
-      <TableRowColumn>{flight.departure}</TableRowColumn>
+      <TableRowColumn>{flight.depature}</TableRowColumn>
       <TableRowColumn>{flight.landing}</TableRowColumn>
       <TableRowColumn>{flight.price}</TableRowColumn>
   </TableRow> ));
