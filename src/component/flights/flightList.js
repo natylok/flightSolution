@@ -9,7 +9,13 @@ import {
 } from 'material-ui/Table';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AddFlight from './addFlight';
-const FlightList = ({flights , addFlight}) => {
+import FilterFlight from './filterFlight'
+const flexStyle = {
+  display:"flex",
+  flexDirection:"row",
+  justifyContent:"space-between"
+}
+const FlightList = ({flights , addFlight , filterFlight}) => {
   let flightList;
   if(!flights || !flights.length){
     flightList = <TableRow> <TableRowColumn> No flights to show </TableRowColumn></TableRow>
@@ -25,7 +31,10 @@ const FlightList = ({flights , addFlight}) => {
   }
   return (
     <div>
-      <AddFlight onClick={addFlight}></AddFlight>
+      <div style={flexStyle}>
+        <AddFlight onClick={addFlight}></AddFlight>
+        <FilterFlight onClick={filterFlight}> </FilterFlight>
+      </div>
       <MuiThemeProvider>
         <Table>
           <TableHeader>

@@ -12,9 +12,10 @@ export const addFlight = (flight) => {
         flight
     };
 }
-export const filterFlight = (filter) =>{
+export const filterFlights = (filter) =>{
     return {
-        type: "FILTER_FLIGHT",
+        type: "FILTER_FLIGHTS",
         filter
     };
 }
+
