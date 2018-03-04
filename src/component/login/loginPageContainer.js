@@ -8,7 +8,8 @@ const mapStateToProps = (state) => {
         hasshRouterObj.history.push("/flights");
     }
     return {
-        isLogedin: state.userReducer.loggedIn
+        isLogedin: state.userReducer.loggedIn,
+        currentTextMessage:state.userReducer.loginErr
     }
   }
 const mapDispatchToProps = dispatch => {
