@@ -17,11 +17,12 @@ const flexStyle = {
 }
 const FlightList = ({flights , addFlight , filterFlight}) => {
   let flightList;
+  let counter = 0;
   if(!flights || !flights.length){
     flightList = <TableRow> <TableRowColumn> No flights to show </TableRowColumn></TableRow>
   }
   else{
-    flightList = flights.map(flight => (<TableRow key={flight.departure}>
+    flightList = flights.map((flight , index) => (<TableRow key={index}>
       <TableRowColumn>{flight.from}</TableRowColumn>
       <TableRowColumn>{flight.to}</TableRowColumn>
       <TableRowColumn>{flight.depature}</TableRowColumn>
